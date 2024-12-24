@@ -796,7 +796,7 @@ function nextQuestion() {
             submitQuiz();
         }
         isTransitioning = false; // إعادة تعيين حالة الانتقال بعد التحميل
-    }, 500); // الانتقال للسؤال التالي بعد نصف ثانية
+    }, 1000); // الانتقال للسؤال التالي بعد نصف ثانية
 }
 function submitQuiz() {
     const selectedAnswer = document.querySelector('input[name="answer"]:checked');
