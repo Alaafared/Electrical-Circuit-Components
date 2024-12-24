@@ -770,16 +770,23 @@ function highlightCorrectAnswer() {
     });
 }
 
+let isTransitioning = false; // متغير لتتبع حالة الانتقال
+
 function nextQuestion() {
-    const selectedAnswer = document.querySelector('input[name="answer"]:checked');
-    if (!selectedAnswer) {
-         alert("يرجى اختيار إجابة قبل الانتقال للسؤال التالي.");
-        return;
+    if (isTransitioning) {
+        return; // منع تكرار الضغط أثناء الانتقال
     }
 
-userAnswers1.push(selectedAnswer.value); // حفظ الإجابة المختارة
+    const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+    if (!selectedAnswer) {
+        alert("يرجى اختيار إجابة قبل الانتقال للسؤال التالي.");
+        return; // منع الانتقال إذا لم يتم اختيار إجابة
+    }
 
+    userAnswers1.push(selectedAnswer.value); // حفظ الإجابة المختارة
     highlightCorrectAnswer();
+
+    isTransitioning = true; // تعيين حالة الانتقال
 
     setTimeout(() => {
         currentQuestionIndex1++;
@@ -788,9 +795,9 @@ userAnswers1.push(selectedAnswer.value); // حفظ الإجابة المختار
         } else {
             submitQuiz();
         }
+        isTransitioning = false; // إعادة تعيين حالة الانتقال بعد التحميل
     }, 2000); // الانتقال للسؤال التالي بعد ثانيتين
 }
-
 function submitQuiz() {
     const selectedAnswer = document.querySelector('input[name="answer"]:checked');
     if (selectedAnswer) {
