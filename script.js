@@ -773,7 +773,7 @@ function highlightCorrectAnswer() {
 function nextQuestion() {
     const selectedAnswer = document.querySelector('input[name="answer"]:checked');
     if (!selectedAnswer) {
-        // alert("يرجى اختيار إجابة قبل الانتقال للسؤال التالي.");
+         alert("يرجى اختيار إجابة قبل الانتقال للسؤال التالي.");
         return;
     }
 
