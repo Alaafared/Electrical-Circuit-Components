@@ -777,11 +777,7 @@ function nextQuestion() {
         return;
     }
 
-    if (selectedAnswer) {
-        userAnswers1.push(selectedAnswer.value);
-    } else {
-        userAnswers1.push(null); // إذا لم يتم الاختيار
-    }
+userAnswers1.push(selectedAnswer.value); // حفظ الإجابة المختارة
 
     highlightCorrectAnswer();
 
